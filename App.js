@@ -6,6 +6,8 @@ import MapView, { Marker } from 'react-native-maps';
 import {IconButton } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 import busImage from './assets/pngwing.com2.png'
+import axios from 'axios';
+
 import {
   Provider,
   
@@ -34,16 +36,22 @@ const App = () => {
   const [notification, setNotification] = useState(false);
   const notificationListener = useRef();
   const responseListener = useRef();
+  const url = 'http://20.194.63.168:5000'
   function target1() {
     _mapView.current.animateToRegion({latitude: 37.532600,
       longitude: 127.024612,
       latitudeDelta: 0.003,
       longitudeDelta: 0.003
         }, 2000);
+        axios.get(`${url}/?sid=2`).then((res) => {
+          console.log("gps =",res.data);
+        })
     
   }
   useEffect(() => {
     registerForPushNotificationsAsync().then(token => setExpoPushToken(token));
+
+    
 
     notificationListener.current = Notifications.addNotificationReceivedListener(notification => {
       setNotification(notification);
@@ -58,18 +66,16 @@ const App = () => {
       Notifications.removeNotificationSubscription(responseListener.current);
     };
   }, []);
-  //console.log(notification)
-
-  async function schedulePushNotification() {
-    await Notifications.scheduleNotificationAsync({
-      content: {
-        title: "You've got mail! 📬",
-        body: 'Here is the notification body',
-        data: { data: 'goes here' },
-      },
-      trigger: { seconds: 2 },
-    });
-  }
+  console.log(notification)
+  useEffect(() => {
+    axios.post(`${url}/token`,{
+      token: expoPushToken
+    }).then(res => {
+        console.log("token =",res.data)
+    }).catch((err) => {
+      console.log("token 보내기 실패");
+    })
+  },[expoPushToken])
   
   async function registerForPushNotificationsAsync() {
     let token;
@@ -165,25 +171,19 @@ const App = () => {
         <IconButton onPress={target1} icon={props => <Icon name="crosshairs-gps" {...props} />} />
         
       </View>
-      <View
+      {/* <View
       style={{
         flex: 1,
         alignItems: 'center',
         justifyContent: 'space-around',
       }}>
-      <Text>Your expo push token: {expoPushToken}</Text>
-      <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Your expo push token: {expoPushToken}</Text> 
+       <View style={{ alignItems: 'center', justifyContent: 'center' }}>
         <Text>Title: {notification && notification.request.content.title} </Text>
         <Text>Body: {notification && notification.request.content.body}</Text>
         <Text>Data: {notification && JSON.stringify(notification.request.content.data)}</Text>
       </View>
-      <Button
-        title="Press to schedule a notification"
-        onPress={async () => {
-          await schedulePushNotification();
-        }}
-      />
-    </View> 
+    </View>  */}
     </View>
   );
   
