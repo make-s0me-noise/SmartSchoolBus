@@ -34,23 +34,24 @@ const App = () => {
   const [visible, setVisible] = useState(false);
   const [expoPushToken, setExpoPushToken] = useState('');
   const [notification, setNotification] = useState(false);
+  const [currentLocation,setCurrentLocation] = useState({
+              latitude: 37.552369388104445, 
+              longitude: 127.07333331532686,
+              latitudeDelta: 0.003,
+              longitudeDelta: 0.003
+  });
   const notificationListener = useRef();
   const responseListener = useRef();
   const url = 'http://20.194.63.168:5000'
   function target1() {
-    _mapView.current.animateToRegion({latitude: 37.532600,
-      longitude: 127.024612,
-      latitudeDelta: 0.003,
-      longitudeDelta: 0.003
-        }, 2000);
-        axios.get(`${url}/?sid=2`).then((res) => {
+    _mapView.current.animateToRegion(currentLocation, 1500);
+        axios.get(`${url}/?sid=10`).then((res) => {
           console.log("gps =",res.data);
         })
     
   }
   useEffect(() => {
     registerForPushNotificationsAsync().then(token => setExpoPushToken(token));
-
     
 
     notificationListener.current = Notifications.addNotificationReceivedListener(notification => {
@@ -76,7 +77,21 @@ const App = () => {
       console.log("token 보내기 실패");
     })
   },[expoPushToken])
-  
+  useEffect(() =>{
+    setTimeout(() => {
+      axios.get(`${url}/?sid=10`).then((res) => {
+        console.log("gps =",parseFloat(res.data.student.latitude))
+        setCurrentLocation({
+          latitude: parseFloat(res.data.student.latitude), 
+          longitude: parseFloat(res.data.student.longitude),
+          latitudeDelta: 0.003,
+          longitudeDelta: 0.003
+      })
+      })
+
+    }, 15000);
+    
+  } ,[currentLocation])
   async function registerForPushNotificationsAsync() {
     let token;
   
@@ -146,8 +161,13 @@ const App = () => {
         <MapView
         ref={_mapView }
           style={styles.map}
-          region={
-            {latitude: 37.532600, longitude: 127.024612}
+          initialRegion={
+            {
+              latitude: 37.552369388104445, 
+              longitude: 127.07333331532686,
+              latitudeDelta: 0.003,
+              longitudeDelta: 0.003
+            }
           }
           
           
@@ -156,7 +176,7 @@ const App = () => {
             
         >
            <Marker style={styles.marker}
-              coordinate={{latitude: 37.532600, longitude: 127.024612}}
+              coordinate={currentLocation}
               image={busImage}
               centerOffset={{x:0,y:0}}
               title="this is a marker"
