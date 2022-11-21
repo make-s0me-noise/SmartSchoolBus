@@ -1,7 +1,7 @@
 #### SmartSchoolBus Project
 <h1 align="center">  
   <br>
-  <img src="https://capsule-render.vercel.app/api?type=slice&color=_#ffcb6b&height=200&section=header&text=Smart🚍SchoolBus&fontSize=90" />
+  <img src="https://capsule-render.vercel.app/api?type=slice&color=ffcb6b&height=200&section=header&text=Smart%F0%9F%9A%8DSchoolBus&fontSize=90" />
   <br>
 </h1>
 
