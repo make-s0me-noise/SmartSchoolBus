@@ -82,7 +82,7 @@ This software uses the following open source packages:
 <img src="https://capsule-render.vercel.app/api?type=slice&color=auto&height=200&section=header&text=Smart🚍SchoolBus&fontSize=90" />
 
 <p align="center">
-  <img alt="Mobius" src="[https://img.shields.io/badge/Django-092E20.svg?style=for-the-badge&logo=django&logoColor=white](https://img.shields.io/badge/Rasberripy-ef-ff69b4)">
+  <img alt="Rasberripy" src="[https://img.shields.io/badge/Rasberripy-ef-ff69b4]">
 </p>
 <h3>🧑🏻‍💻Member🧑🏻‍💻</h3>
 1. make-s0me-noise
