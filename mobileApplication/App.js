@@ -7,7 +7,7 @@ import {IconButton } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 import busImage from './assets/pngwing.com2.png'
 import axios from 'axios';
-
+import {EventEmitter} from 'react-native'
 import {
   Provider,
   
@@ -47,7 +47,7 @@ const App = () => {
   const url = 'http://20.194.63.168:5000'
   function target1() {
     _mapView.current.animateToRegion(currentLocation, 1500);
-    axios.get(`${url}/?sid=10`)
+    axios.get(`${url}/?sid=1`)
     .then((res) => {
       console.log("gps =",parseFloat(res.data))
       if(res.data.student.latitude)
@@ -69,7 +69,7 @@ const App = () => {
       if(res.data)
       {
       
-      setDescription(`이름: ${res.data.bus.fellow.name} ,전화번호: ${res.data.bus.fellow.phonenum}`)
+      setDescription(`name : ${res.data.bus.fellow.name} ,phone-number: ${res.data.bus.fellow.phonenum}`)
     }
   }
     ).catch(res => {
@@ -85,7 +85,7 @@ const App = () => {
     });
 
     responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {
-      console.log(response);
+      //console.log(response);
     });
 
     return () => {
@@ -95,20 +95,21 @@ const App = () => {
   }, []);
   console.log(notification)
   useEffect(() => {
-    console.log("token =",expoPushToken)
+    //console.log("token =",expoPushToken)
     axios.post(`${url}/token`,{
       token: expoPushToken
     }).then(res => {
-        console.log("token =",res.data)
+        //console.log("token =",res.data)
     }).catch((err) => {
-      console.log("token 보내기 실패");
+      //console.log("token 보내기 실패");
     })
   },[expoPushToken])
   useEffect(() =>{
     setTimeout(() => {
       axios.get(`${url}/?sid=1`)
       .then((res) => {
-        console.log("gps =",parseFloat(res.data.student.latitude))
+        console.log("latitude =",parseFloat(res.data.student.latitude))
+        console.log("longitude =",parseFloat(res.data.student.longitude))
         if(res.data.student.latitude)
         {
         
@@ -128,13 +129,13 @@ const App = () => {
         if(res.data)
         {
         
-        setDescription(`이름: ${res.data.bus.fellow.name} ,전화번호: ${res.data.bus.fellow.phonenum}`)
+        setDescription(`name : ${res.data.bus.fellow.name} ,phone: ${res.data.bus.fellow.phonenum}`)
       }
     }
       ).catch(res => {
         console.log("동승자 정보가 조회되지 않습니다.")
       })
-      setTime(10000);
+      setTime(1000);
       console.log("10초 후 리로드")
     }, time);
     
@@ -226,7 +227,7 @@ const App = () => {
               coordinate={currentLocation}
               image={busImage}
               centerOffset={{x:0,y:0}}
-              title="동승자 정보"
+              title="fellow information"
               description={description}
             />
             
@@ -302,8 +303,8 @@ const styles = StyleSheet.create({
     borderRadius : 8,
   },
   marker:{
-    width:'2%',
-    height:'2%',
+    width:2,
+    height:2,
   }
 });
 const AppProvider = () => (
