@@ -1,8 +1,6 @@
 
 <h1 align="center">  
   <br>
-  <a href="https://github.com/make-s0me-noise/smartbus/blob/master/img/logo.png?raw=true"><img src="https://github.com/make-s0me-noise/smartbus/blob/master/img/logo.png?raw=true" style="width:100px"></a>
-  <br>
   <img src="https://capsule-render.vercel.app/api?type=slice&color=auto&height=200&section=header&text=Smart🚍SchoolBus&fontSize=90" />
   <br>
 </h1>
@@ -78,18 +76,20 @@ This software uses the following open source packages:
 ## License
 
 
-#### 🌐 S! Web Service Project frontend
+#### SmartSchoolBus Project
 <img src="https://capsule-render.vercel.app/api?type=slice&color=auto&height=200&section=header&text=Smart🚍SchoolBus&fontSize=90" />
 
-<p align="center">
-  <img alt="Rasberripy" src="[https://img.shields.io/badge/Rasberripy-ef-ff69b4]">
-</p>
+<a href="https://github.com/kyechan99/capsule-render/labels/Idea">
+    <img src="https://img.shields.io/badge/IDEA%20ISSUE%20-%23F7DF1E.svg?&style=for-the-badge&&logoColor=white"/>
+ </a>
 <h3>🧑🏻‍💻Member🧑🏻‍💻</h3>
-1. make-s0me-noise
-<br>
-2. givensik
+1.gyuseob908
+2. brwook
+3. make-s0me-noise
+4. rlawg
+5. v1ctory3
 
-<h3>📓Implemented Function📓</h3>
+<h3>more info</h3>
 
 
-<p>📚Ref. 📚</p>
+
