@@ -1,5 +1,7 @@
 
-<h1 align="center">
+<h1 align="center">  
+  <br>
+  <a href="https://github.com/make-s0me-noise/smartbus/blob/master/img/logo.png?raw=true">
   <br>
   Smart School Bus
   <br>
