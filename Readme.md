@@ -1,4 +1,4 @@
-
+#### SmartSchoolBus Project
 <h1 align="center">  
   <br>
   <img src="https://capsule-render.vercel.app/api?type=slice&color=auto&height=200&section=header&text=Smart🚍SchoolBus&fontSize=90" />
@@ -8,9 +8,6 @@
 <h4 align="center">Internatinal oneM2M Hackathon Extension of 6th Mobius developer event</a>.</h4>
 
 
-
-#### SmartSchoolBus Project
-<img src="https://capsule-render.vercel.app/api?type=slice&color=auto&height=200&section=header&text=Smart🚍SchoolBus&fontSize=90" />
 
 
 <h3>🧑🏻‍💻Member🧑🏻‍💻</h3>
