@@ -34,6 +34,8 @@ const App = () => {
   const [visible, setVisible] = useState(false);
   const [expoPushToken, setExpoPushToken] = useState('');
   const [notification, setNotification] = useState(false);
+  const [description, setDescription] = useState('동승자 정보가 없습니다.')
+  const [time,setTime] = useState(1);
   const [currentLocation,setCurrentLocation] = useState({
               latitude: 37.552369388104445, 
               longitude: 127.07333331532686,
@@ -45,10 +47,34 @@ const App = () => {
   const url = 'http://20.194.63.168:5000'
   function target1() {
     _mapView.current.animateToRegion(currentLocation, 1500);
-        axios.get(`${url}/?sid=10`).then((res) => {
-          console.log("gps =",res.data);
-        })
-    
+    axios.get(`${url}/?sid=10`)
+    .then((res) => {
+      console.log("gps =",parseFloat(res.data))
+      if(res.data.student.latitude)
+      {
+      
+      setCurrentLocation({
+        latitude: parseFloat(res.data.student.latitude), 
+        longitude: parseFloat(res.data.student.longitude),
+        latitudeDelta: 0.003,
+        longitudeDelta: 0.003
+    })
+  }
+    }).catch(res => {
+      console.log("gps가 작동하지 않습니다.")
+    })
+    axios.get(`${url}?bid=1`)
+    .then((res) => {
+      console.log("동승자 =",res.data)
+      if(res.data)
+      {
+      
+      setDescription(`이름: ${res.data.bus.fellow.name} ,전화번호: ${res.data.bus.fellow.phonenum}`)
+    }
+  }
+    ).catch(res => {
+      console.log("동승자 정보가 조회되지 않습니다.")
+    })
   }
   useEffect(() => {
     registerForPushNotificationsAsync().then(token => setExpoPushToken(token));
@@ -69,6 +95,7 @@ const App = () => {
   }, []);
   console.log(notification)
   useEffect(() => {
+    console.log("token =",expoPushToken)
     axios.post(`${url}/token`,{
       token: expoPushToken
     }).then(res => {
@@ -79,17 +106,37 @@ const App = () => {
   },[expoPushToken])
   useEffect(() =>{
     setTimeout(() => {
-      axios.get(`${url}/?sid=10`).then((res) => {
+      axios.get(`${url}/?sid=1`)
+      .then((res) => {
         console.log("gps =",parseFloat(res.data.student.latitude))
+        if(res.data.student.latitude)
+        {
+        
         setCurrentLocation({
           latitude: parseFloat(res.data.student.latitude), 
           longitude: parseFloat(res.data.student.longitude),
           latitudeDelta: 0.003,
           longitudeDelta: 0.003
       })
+    }
+      }).catch(res => {
+        console.log("gps가 작동하지 않습니다.")
       })
-
-    }, 15000);
+      axios.get(`${url}?bid=1`)
+      .then((res) => {
+        console.log("동승자 =",res.data)
+        if(res.data)
+        {
+        
+        setDescription(`이름: ${res.data.bus.fellow.name} ,전화번호: ${res.data.bus.fellow.phonenum}`)
+      }
+    }
+      ).catch(res => {
+        console.log("동승자 정보가 조회되지 않습니다.")
+      })
+      setTime(10000);
+      console.log("10초 후 리로드")
+    }, time);
     
   } ,[currentLocation])
   async function registerForPushNotificationsAsync() {
@@ -127,7 +174,7 @@ const App = () => {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <Dialog visible={visible} onDismiss={() => setVisible(false)}>
+      {/* <Dialog visible={visible} onDismiss={() => setVisible(false)}>
         <DialogHeader title="알림을 보여줄게요" />
         <DialogContent>
           <Text>
@@ -143,18 +190,18 @@ const App = () => {
             onPress={() => setVisible(false)}
           />
         </DialogActions>
-      </Dialog>
+      </Dialog> */}
       <View style={styles.header}>
         <Text style={styles.btnText}>Smart Bus</Text>
       </View>
       <View style={styles.contents}>
-        <View style={styles.button}>
+        {/* <View style={styles.button}>
         <Button
           title = "알림 확인"
           onPress={() => setVisible(true)} 
           style = {styles.button}
         />
-        </View>
+        </View> */}
       </View>
       <View style={styles.frame}>
         <View style ={styles.container2}>
@@ -179,8 +226,8 @@ const App = () => {
               coordinate={currentLocation}
               image={busImage}
               centerOffset={{x:0,y:0}}
-              title="this is a marker"
-              description="this is a marker example"
+              title="동승자 정보"
+              description={description}
             />
             
             </MapView>
@@ -237,7 +284,7 @@ const styles = StyleSheet.create({
     shadowColor: "#000000",
     shadowOpacity: 0.3,
     shadowOffset: {width:2, height : 2},
-    borderRadius : '8%',
+    borderRadius : 8,
     
   },
   frame:{
@@ -252,7 +299,7 @@ const styles = StyleSheet.create({
   },
   map: {
     ...StyleSheet.absoluteFillObject,
-    borderRadius : '8%',
+    borderRadius : 8,
   },
   marker:{
     width:'2%',
