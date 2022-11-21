@@ -1,0 +1,21 @@
+{
+  "name": "tas-radar",
+  "version": "1.0.0",
+  "description": "tas-radar",
+  "engines": {
+    "node": "10.15.0",
+    "npm": "6.9.0"
+  },
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "author": "Seunghwan Lee",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "ip": "^1.1.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
