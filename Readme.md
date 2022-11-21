@@ -1,10 +1,9 @@
-<img src="https://capsule-render.vercel.app/api?type=slice&color=auto&height=200&section=header&text=Smart🚍SchoolBus&fontSize=90" />
 
 <h1 align="center">  
   <br>
   <a href="https://github.com/make-s0me-noise/smartbus/blob/master/img/logo.png?raw=true"><img src="https://github.com/make-s0me-noise/smartbus/blob/master/img/logo.png?raw=true" style="width:100px"></a>
   <br>
-  Smart School Bus
+  <img src="https://capsule-render.vercel.app/api?type=slice&color=auto&height=200&section=header&text=Smart🚍SchoolBus&fontSize=90" />
   <br>
 </h1>
 
