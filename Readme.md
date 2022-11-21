@@ -1,7 +1,7 @@
 
 <h1 align="center">  
   <br>
-  <a href="https://github.com/make-s0me-noise/smartbus/blob/master/img/logo.png?raw=true"><img src="https://github.com/make-s0me-noise/smartbus/blob/master/img/logo.png?raw=true" style="width:30px"></a>
+  <a href="https://github.com/make-s0me-noise/smartbus/blob/master/img/logo.png?raw=true"><img src="https://github.com/make-s0me-noise/smartbus/blob/master/img/logo.png?raw=true" style="width:100px"></a>
   <br>
   Smart School Bus
   <br>
