@@ -27,6 +27,6 @@
 
 
 ## Demo Video
-<iframe width="1280" height="720" src="https://www.youtube.com/embed/5RGtvrRLieo" title="Spectacle demo final" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![Spectacle demo final](https://img.youtube.com/vi/5RGtvrRLieo/0.jpg)](https://www.youtube.com/watch?v=5RGtvrRLieo)
 
 
