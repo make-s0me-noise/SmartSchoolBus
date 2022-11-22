@@ -27,6 +27,6 @@
 
 
 ## Demo Video
-* https://www.youtube.com/watch?v=5RGtvrRLieo
+* [![Spectacle demo final](https://www.youtube.com/watch?v=5RGtvrRLieo/0.jpg)](https://www.youtube.com/watch?v=5RGtvrRLieo)
 
 
