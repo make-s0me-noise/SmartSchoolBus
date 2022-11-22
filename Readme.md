@@ -23,7 +23,7 @@
 
 
 ## More Info
-*https://www.hackster.io/spectacle/smart-school-bus-f4bae0
+* https://www.hackster.io/spectacle/smart-school-bus-f4bae0
 
 
 ## Demo Video
