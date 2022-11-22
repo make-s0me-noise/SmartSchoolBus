@@ -21,7 +21,7 @@
 5. v1ctory3
 
 ## Model Diagram
-![School Bus Diagram]([/img/myImg.png](https://user-images.githubusercontent.com/92886473/203373141-5326eadb-e0bf-45c6-b393-d31b2839e071.png)){: width="807" height="547"}
+![School Bus Diagram](https://user-images.githubusercontent.com/92886473/203373141-5326eadb-e0bf-45c6-b393-d31b2839e071.png){: width="807" height="547"}
 1. To verify that the passenger is present on the bus and is a designated person, use the camera and LED after the bus leaves to determine if the person is registered in the database.
 
 2. The moving path of the bus is transmitted to the application through a GPS sensor. In addition, the bus's departure and arrival information is identified and a push alarm is transmitted.
