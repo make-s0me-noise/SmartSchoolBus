@@ -20,7 +20,17 @@
 </br>
 5. v1ctory3
 
+## Model Diagram
 
+1. To verify that the passenger is present on the bus and is a designated person, use the camera and LED after the bus leaves to determine if the person is registered in the database.
+
+2. The moving path of the bus is transmitted to the application through a GPS sensor. In addition, the bus's departure and arrival information is identified and a push alarm is transmitted.
+
+3. To prevent accidents when disembarking, the LED in front of the driver lights up when weight is detected through the load cell and turns off when weight is not detected
+
+4. When the bus arrives at its final destination, the buzzer rings, and the driver goes to the back of the bus to turn off the buzzer, checks if there are any children left, and presses the button to turn off the buzzer.
+
+5. Send a push alarm to the application if the load cell detects weight on the seat even after the bus arrives
 
 ## More Info
 * https://www.hackster.io/spectacle/smart-school-bus-f4bae0
